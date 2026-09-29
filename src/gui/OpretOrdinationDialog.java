@@ -86,9 +86,9 @@ public class OpretOrdinationDialog extends Stage {
 		}
 
 		btnOpret.setMinWidth(100);
-		btnOpret.setOnAction(event -> opretAction());
+		btnOpret.setOnAction(_ -> opretAction());
 		btnFortryd.setMinWidth(100);
-		btnFortryd.setOnAction(event -> this.hide());
+		btnFortryd.setOnAction(_ -> this.hide());
 
 		HBox hbox = new HBox(10);
 		hbox.alignmentProperty().set(Pos.BOTTOM_CENTER);

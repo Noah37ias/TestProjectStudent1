@@ -60,9 +60,9 @@ public class StatistikPane extends GridPane {
 		this.add(pane2, 0, 2);
 
 		// Adding listeners
-		txfVægtFra.setOnKeyReleased(event -> updateDetails());
-		txfVægtTil.setOnKeyReleased(event -> updateDetails());
-		lstLægemidler.setOnAction(event -> updateDetails());
+		txfVægtFra.setOnKeyReleased(_ -> updateDetails());
+		txfVægtTil.setOnKeyReleased(_ -> updateDetails());
+		lstLægemidler.setOnAction(_ -> updateDetails());
 
 		updateDetails();
 	}

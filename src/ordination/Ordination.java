@@ -34,6 +34,6 @@ public abstract class Ordination {
     /** Returner den gennemsnitlige dosis givet per dag. */
     public abstract double døgnDosis();
 
-    /** Returner ordinationstypen som en String. */
+    /** Returner ordinations typen som en String. */
     public abstract String getType();
 }

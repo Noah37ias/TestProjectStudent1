@@ -8,8 +8,9 @@ public class Lægemiddel {
     private final String enhed;
 
     public Lægemiddel(
-            String navn, double enhedPrKgPrDøgnLet, double enhedPrKgPrDøgnNormal,
-            double enhedPrKgPrDøgnTung, String enhed) {
+        String navn, double enhedPrKgPrDøgnLet, double enhedPrKgPrDøgnNormal,
+        double enhedPrKgPrDøgnTung, String enhed
+    ) {
         this.navn = navn;
         this.enhedPrKgPrDøgnLet = enhedPrKgPrDøgnLet;
         this.enhedPrKgPrDøgnNormal = enhedPrKgPrDøgnNormal;

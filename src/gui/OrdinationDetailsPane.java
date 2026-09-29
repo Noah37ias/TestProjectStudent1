@@ -86,7 +86,7 @@ public class OrdinationDetailsPane extends GridPane {
         pnPane.add(btnAnvend, 1, 3);
         datePicker.setMaxWidth(90);
 
-        btnAnvend.setOnAction(event -> actionAnvend());
+        btnAnvend.setOnAction(_ -> actionAnvend());
         
         lblError.setTextFill(Color.RED);
         pnPane.add(lblError, 0, 8, 2, 1);

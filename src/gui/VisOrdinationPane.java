@@ -21,17 +21,17 @@ public class VisOrdinationPane extends GridPane {
         this.add(new Label("Vælg patient"), 0, 0);
         this.add(lstPatient, 0, 1);
         lstPatient.getItems().setAll(Controller.getAllPatienter());
-        lstPatient.getSelectionModel().selectedIndexProperty().addListener(observable ->
-                lstOrdination.getItems().setAll(
-                        lstPatient.getSelectionModel().getSelectedItem().getOrdinationer())
-        );
+        lstPatient.getSelectionModel().selectedIndexProperty().addListener(_ ->
+            lstOrdination.getItems().setAll(
+                lstPatient.getSelectionModel().getSelectedItem().getOrdinationer()
+            ));
         lstPatient.getSelectionModel().selectFirst();
 
         this.add(new Label("Vælg ordination"), 1, 0);
         this.add(lstOrdination, 1, 1);
-        lstOrdination.getSelectionModel().selectedItemProperty().addListener(observable -> updateDetails());
+        lstOrdination.getSelectionModel().selectedItemProperty().addListener(_ -> updateDetails());
 
-        this.add(new Label("Ordinationsdetaljer"), 2, 0);
+        this.add(new Label("Ordinations detaljer"), 2, 0);
         this.add(ordinationDetailsPane, 2, 1);
     }
 
@@ -43,8 +43,8 @@ public class VisOrdinationPane extends GridPane {
             ordinationDetailsPane.setOrdination(ordination);
             if (ordination instanceof DagligFast dagligFast) {
                 ordinationDetailsPane.setFast(dagligFast.getDoser()[0],
-                        dagligFast.getDoser()[1], dagligFast.getDoser()[2],
-                        dagligFast.getDoser()[3]);
+                    dagligFast.getDoser()[1], dagligFast.getDoser()[2],
+                    dagligFast.getDoser()[3]);
             } else if (ordination instanceof DagligSkæv) {
                 ordinationDetailsPane.setSkæv((DagligSkæv) ordination);
             } else if (ordination instanceof PN) {

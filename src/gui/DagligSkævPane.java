@@ -35,7 +35,7 @@ public class DagligSkævPane extends GridPane {
 		listDosis.setMaxHeight(100);
 		add(listDosis, 0, 1);
 
-		btnOpret.setOnAction(event -> opretDosis());
+		btnOpret.setOnAction(_ -> opretDosis());
 		
 		lblError.setTextFill(Color.RED);
 		add(lblError, 0, 2, 2, 1);

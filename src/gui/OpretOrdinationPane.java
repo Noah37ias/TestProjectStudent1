@@ -55,7 +55,7 @@ public class OpretOrdinationPane extends GridPane {
 		this.add(lblError, 0, 3, 1, 2);
 		Button btnOpret = new Button("Opret ordination");
 		this.add(btnOpret, 2, 2);
-		btnOpret.setOnAction(event -> actionOpret());
+		btnOpret.setOnAction(_ -> actionOpret());
 
 		RowConstraints row1 = new RowConstraints();
 		RowConstraints row2 = new RowConstraints();
@@ -71,7 +71,7 @@ public class OpretOrdinationPane extends GridPane {
 		} else if (lstLægemiddel.getSelectionModel().getSelectedItem() == null) {
 			lblError.setText("Du skal vælge et lægemiddel.");
 		} else if (toggleGroup.getSelectedToggle() == null) {
-			lblError.setText("Du skal vælge en ordinationstype.");
+			lblError.setText("Du skal vælge en ordinations type.");
 		} else {
 			OpretOrdinationDialog dia = new OpretOrdinationDialog(lstPatient
 					.getSelectionModel().getSelectedItem(), lstLægemiddel

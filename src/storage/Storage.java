@@ -11,7 +11,7 @@ public class Storage {
     private final List<Lægemiddel> lægemidler = new ArrayList<>();
 
     public List<Patient> getAllPatienter() {
-        return new ArrayList<>(patienter);
+        return List.copyOf(patienter);
     }
 
     public void storePatient(Patient patient) {
@@ -19,7 +19,7 @@ public class Storage {
     }
 
     public List<Lægemiddel> getAllLægemidler() {
-        return new ArrayList<>(lægemidler);
+        return List.copyOf(lægemidler);
     }
 
     public void storeLægemiddel(Lægemiddel lægemiddel) {

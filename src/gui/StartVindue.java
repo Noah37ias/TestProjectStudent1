@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class StartVindue extends Application {
-
 	@Override
 	public void start(Stage stage) {
 		stage.setTitle("Medicinordination");
@@ -47,8 +46,8 @@ public class StartVindue extends Application {
 		tabPane.getTabs().add(tabVis);
 		tabPane.getTabs().add(tabStatistik);
 
-		tabVis.setOnSelectionChanged(event -> visOrdinationPane.updateControls());
-		tabStatistik.setOnSelectionChanged(event -> statistikPane.updateControls());
-		tabOpret.setOnSelectionChanged(event -> opretOrdinationsPane.updateControls());
+		tabVis.setOnSelectionChanged(_ -> visOrdinationPane.updateControls());
+		tabStatistik.setOnSelectionChanged(_ -> statistikPane.updateControls());
+		tabOpret.setOnSelectionChanged(_ -> opretOrdinationsPane.updateControls());
 	}
 }
