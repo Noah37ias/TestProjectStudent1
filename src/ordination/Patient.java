@@ -1,9 +1,12 @@
 package ordination;
 
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
 public class Patient {
-    private final String cprNr;
-    private final String navn;
-    private final double vægt;
+    private String cprNr;
+    private String navn;
+    private double vægt;
 
     public Patient(String cprNr, String navn, double vægt) {
         this.cprNr = cprNr;

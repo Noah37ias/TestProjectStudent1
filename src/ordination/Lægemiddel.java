@@ -1,37 +1,40 @@
 package ordination;
 
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
 public class Lægemiddel {
-    private final String navn;
-    private final double enhedPrKgPrDøgnLet;    // faktor der anvendes hvis patient vejer < 25 kg
-    private final double enhedPrKgPrDøgnNormal; // faktor der anvendes hvis 25 kg <= patient vægt <= 120 kg
-    private final double enhedPrKgPrDøgnTung;   // faktor der anvendes hvis patient vægt > 120 kg
-    private final String enhed;
+    private String navn;
+    private String enhed;
+    private double antalPrKgPrDøgnLet;    // faktor hvis patients vægt < 25 kg
+    private double antalPrKgPrDøgnNormal; // faktor hvis 25 kg <= patient vægt <= 120 kg
+    private double antalPrKgPrDøgnTung;   // faktor hvis patients vægt > 120 kg
 
     public Lægemiddel(
-        String navn, double enhedPrKgPrDøgnLet, double enhedPrKgPrDøgnNormal,
-        double enhedPrKgPrDøgnTung, String enhed
+        String navn, String enhed,
+        double antalPrKgPrDøgnLet, double antalPrKgPrDøgnNormal, double antalPrKgPrDøgnTung
     ) {
         this.navn = navn;
-        this.enhedPrKgPrDøgnLet = enhedPrKgPrDøgnLet;
-        this.enhedPrKgPrDøgnNormal = enhedPrKgPrDøgnNormal;
-        this.enhedPrKgPrDøgnTung = enhedPrKgPrDøgnTung;
         this.enhed = enhed;
+        this.antalPrKgPrDøgnLet = antalPrKgPrDøgnLet;
+        this.antalPrKgPrDøgnNormal = antalPrKgPrDøgnNormal;
+        this.antalPrKgPrDøgnTung = antalPrKgPrDøgnTung;
     }
 
     public String getEnhed() {
         return enhed;
     }
 
-    public double getEnhedPrKgPrDøgnLet() {
-        return enhedPrKgPrDøgnLet;
+    public double getAntalPrKgPrDøgnLet() {
+        return antalPrKgPrDøgnLet;
     }
 
-    public double getEnhedPrKgPrDøgnNormal() {
-        return enhedPrKgPrDøgnNormal;
+    public double getAntalPrKgPrDøgnNormal() {
+        return antalPrKgPrDøgnNormal;
     }
 
-    public double getEnhedPrKgPrDøgnTung() {
-        return enhedPrKgPrDøgnTung;
+    public double getAntalPrKgPrDøgnTung() {
+        return antalPrKgPrDøgnTung;
     }
 
     @Override

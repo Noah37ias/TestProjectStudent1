@@ -3,7 +3,10 @@ package gui;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
+@NullMarked
 public class DagligFastPane extends GridPane {
     private final TextField txtMorgen = new TextField();
     private final TextField txtMiddag = new TextField();
@@ -42,30 +45,30 @@ public class DagligFastPane extends GridPane {
         txtNat.setText(nat);
     }
 
-    public Double getMorgen() {
+    public @Nullable Double getMorgen() {
         return parseTextField(txtMorgen);
     }
 
-    public Double getMiddag() {
+    public @Nullable Double getMiddag() {
         return parseTextField(txtMiddag);
     }
 
-    public Double getAften() {
+    public @Nullable Double getAften() {
         return parseTextField(txtAften);
     }
 
-    public Double getNat() {
+    public @Nullable Double getNat() {
         return parseTextField(txtNat);
     }
 
-    private Double parseTextField(TextField textField) {
+    private @Nullable Double parseTextField(TextField textField) {
         if (textField.getText().isEmpty()) {
             return null;
         } else {
             return Double.parseDouble(textField.getText());
         }
     }
-    
+
     public void makeReadOnly() {
         txtMorgen.setEditable(false);
         txtMiddag.setEditable(false);

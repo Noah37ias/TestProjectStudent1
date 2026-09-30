@@ -1,16 +1,18 @@
 package storage;
 
+import ordination.Lægemiddel;
+import ordination.Patient;
+import org.jspecify.annotations.NullMarked;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import ordination.Lægemiddel;
-import ordination.Patient;
-
+@NullMarked
 public class Storage {
     private final List<Patient> patienter = new ArrayList<>();
     private final List<Lægemiddel> lægemidler = new ArrayList<>();
 
-    public List<Patient> getAllPatienter() {
+    public List<Patient> getAllePatienter() {
         return List.copyOf(patienter);
     }
 
@@ -18,7 +20,7 @@ public class Storage {
         patienter.add(patient);
     }
 
-    public List<Lægemiddel> getAllLægemidler() {
+    public List<Lægemiddel> getAlleLægemidler() {
         return List.copyOf(lægemidler);
     }
 

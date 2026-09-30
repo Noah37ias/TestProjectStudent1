@@ -1,16 +1,22 @@
 package gui;
 
 import controller.Controller;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import ordination.DagligSkæv;
 import ordination.Dosis;
 import ordination.Ordination;
 import ordination.PN;
+import org.jspecify.annotations.NullMarked;
 
 import java.time.LocalDate;
 
+@NullMarked
 public class OrdinationDetailsPane extends GridPane {
     private final TextField txtStarttid;
     private final TextField txtSluttid;
@@ -87,7 +93,7 @@ public class OrdinationDetailsPane extends GridPane {
         datePicker.setMaxWidth(90);
 
         btnAnvend.setOnAction(_ -> actionAnvend());
-        
+
         lblError.setTextFill(Color.RED);
         pnPane.add(lblError, 0, 8, 2, 1);
     }
@@ -97,18 +103,21 @@ public class OrdinationDetailsPane extends GridPane {
         LocalDate anvendtDato = datePicker.getValue();
         try {
             Controller.anvendOrdinationPN(pn, anvendtDato);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             lblError.setText(e.getMessage());
             return;
         }
         txtAnvendt.setText(pn.antalGangeAnvendt() + " gange");
         txtDosis.setText(pn.getAntalEnheder() + "");
 
-        txtDøgndosis.setText(pn.doegnDosis() + " "
-            + pn.getLaegemiddel().getEnhed());
-        txtTotalDosis.setText(pn.samletDosis() + " "
-            + pn.getLaegemiddel().getEnhed());
+        if (pn.getLægemiddel() != null) {
+            txtDøgndosis.setText(pn.døgnDosis() + " "
+                + pn.getLægemiddel().getEnhed());
+        }
+        if (pn.getLægemiddel() != null) {
+            txtTotalDosis.setText(pn.samletDosis() + " "
+                + pn.getLægemiddel().getEnhed());
+        }
     }
 
     public void clear() {
@@ -127,32 +136,26 @@ public class OrdinationDetailsPane extends GridPane {
         txtType.setText(ordination.getType());
         txtStarttid.setText(ordination.getStartDato().toString());
         txtSluttid.setText(ordination.getSlutDato().toString());
-        txtLægemiddel.setText(ordination.getLaegemiddel().toString());
+        if (ordination.getLægemiddel() != null) {
+            txtLægemiddel.setText(ordination.getLægemiddel().toString());
+        }
         txtDøgndosis.setText(ordination.døgnDosis() + "");
         txtTotalDosis.setText(ordination.samletDosis() + "");
     }
 
     public void setFast(Dosis morgen, Dosis middag, Dosis aften, Dosis nat) {
         this.add(fastPane, 0, 6, 2, 1);
-        if (morgen != null) {
-            fastPane.setMorgen(morgen.getAntal() + "");
-        }
-        if (middag != null) {
-            fastPane.setMiddag(middag.getAntal() + "");
-        }
-        if (aften != null) {
-            fastPane.setAften(aften.getAntal() + "");
-        }
-        if (nat != null) {
-            fastPane.setNat(nat.getAntal() + "");
-        }
+        fastPane.setMorgen(morgen.getAntal() + "");
+        fastPane.setMiddag(middag.getAntal() + "");
+        fastPane.setAften(aften.getAntal() + "");
+        fastPane.setNat(nat.getAntal() + "");
     }
 
     public void setSkæv(DagligSkæv skæv) {
         textAreaSkæv.clear();
         this.add(textAreaSkæv, 0, 6, 2, 1);
         for (Dosis d : skæv.getDoser()) {
-            textAreaSkæv.appendText(d.toString() + "\n");
+            textAreaSkæv.appendText(d + "\n");
         }
     }
 

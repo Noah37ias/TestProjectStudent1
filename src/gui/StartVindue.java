@@ -7,47 +7,49 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class StartVindue extends Application {
-	@Override
-	public void start(Stage stage) {
-		stage.setTitle("Medicinordination");
-		BorderPane pane = new BorderPane();
-		this.initContent(pane);
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle("Medicin ordination");
+        BorderPane pane = new BorderPane();
+        this.initContent(pane);
 
-		Scene scene = new Scene(pane);
-		stage.setScene(scene);
-		stage.setHeight(500);
-		stage.setWidth(800);
-		stage.show();
-	}
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.setHeight(500);
+        stage.setWidth(800);
+        stage.show();
+    }
 
-	private void initContent(BorderPane pane) {
-		TabPane tabPane = new TabPane();
-		this.initTabPane(tabPane);
-		pane.setCenter(tabPane);
-	}
+    private void initContent(BorderPane pane) {
+        TabPane tabPane = new TabPane();
+        this.initTabPane(tabPane);
+        pane.setCenter(tabPane);
+    }
 
-	private void initTabPane(TabPane tabPane) {
-		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+    private void initTabPane(TabPane tabPane) {
+        tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 
-		Tab tabOpret = new Tab("Opret ordinationer");
-		Tab tabVis = new Tab("Vis ordinationer");
-		Tab tabStatistik = new Tab("Vis statistik");
+        Tab tabOpret = new Tab("Opret ordinationer");
+        Tab tabVis = new Tab("Vis ordinationer");
+        Tab tabStatistik = new Tab("Vis statistik");
 
-		OpretOrdinationPane opretOrdinationsPane = new OpretOrdinationPane();
-		tabOpret.setContent(opretOrdinationsPane);
-		VisOrdinationPane visOrdinationPane = new VisOrdinationPane();
-		tabVis.setContent(visOrdinationPane);
-		StatistikPane statistikPane = new StatistikPane();
-		tabStatistik.setContent(statistikPane);
+        OpretOrdinationPane opretOrdinationsPane = new OpretOrdinationPane();
+        tabOpret.setContent(opretOrdinationsPane);
+        VisOrdinationPane visOrdinationPane = new VisOrdinationPane();
+        tabVis.setContent(visOrdinationPane);
+        StatistikPane statistikPane = new StatistikPane();
+        tabStatistik.setContent(statistikPane);
 
-		tabPane.getTabs().add(tabOpret);
-		tabPane.getTabs().add(tabVis);
-		tabPane.getTabs().add(tabStatistik);
+        tabPane.getTabs().add(tabOpret);
+        tabPane.getTabs().add(tabVis);
+        tabPane.getTabs().add(tabStatistik);
 
-		tabVis.setOnSelectionChanged(_ -> visOrdinationPane.updateControls());
-		tabStatistik.setOnSelectionChanged(_ -> statistikPane.updateControls());
-		tabOpret.setOnSelectionChanged(_ -> opretOrdinationsPane.updateControls());
-	}
+        tabVis.setOnSelectionChanged(_ -> visOrdinationPane.updateControls());
+        tabStatistik.setOnSelectionChanged(_ -> statistikPane.updateControls());
+        tabOpret.setOnSelectionChanged(_ -> opretOrdinationsPane.updateControls());
+    }
 }

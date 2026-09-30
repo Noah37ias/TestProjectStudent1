@@ -5,8 +5,14 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
-import ordination.*;
+import ordination.DagligFast;
+import ordination.DagligSkæv;
+import ordination.Ordination;
+import ordination.PN;
+import ordination.Patient;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class VisOrdinationPane extends GridPane {
     private final ListView<Patient> lstPatient = new ListView<>();
     private final ListView<Ordination> lstOrdination = new ListView<>();
@@ -20,11 +26,12 @@ public class VisOrdinationPane extends GridPane {
 
         this.add(new Label("Vælg patient"), 0, 0);
         this.add(lstPatient, 0, 1);
-        lstPatient.getItems().setAll(Controller.getAllPatienter());
+        lstPatient.getItems().setAll(Controller.getAllePatienter());
         lstPatient.getSelectionModel().selectedIndexProperty().addListener(_ ->
             lstOrdination.getItems().setAll(
                 lstPatient.getSelectionModel().getSelectedItem().getOrdinationer()
-            ));
+            )
+        );
         lstPatient.getSelectionModel().selectFirst();
 
         this.add(new Label("Vælg ordination"), 1, 0);
@@ -36,29 +43,31 @@ public class VisOrdinationPane extends GridPane {
     }
 
     public void updateDetails() {
-        Ordination ordination = lstOrdination.getSelectionModel().getSelectedItem();
         ordinationDetailsPane.clear();
-        if (ordination != null) {
+        int selectedIndex = lstOrdination.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1) {
+            Ordination ordination = lstOrdination.getSelectionModel().getSelectedItem();
             ordinationDetailsPane.clear();
             ordinationDetailsPane.setOrdination(ordination);
-            if (ordination instanceof DagligFast dagligFast) {
-                ordinationDetailsPane.setFast(dagligFast.getDoser()[0],
-                    dagligFast.getDoser()[1], dagligFast.getDoser()[2],
-                    dagligFast.getDoser()[3]);
-            } else if (ordination instanceof DagligSkæv) {
-                ordinationDetailsPane.setSkæv((DagligSkæv) ordination);
-            } else if (ordination instanceof PN) {
-                ordinationDetailsPane.setPN((PN) ordination);
+            switch (ordination) {
+                case DagligFast dagligFast -> ordinationDetailsPane.setFast(
+                    dagligFast.getDoser()[0], dagligFast.getDoser()[1],
+                    dagligFast.getDoser()[2], dagligFast.getDoser()[3]
+                );
+                case DagligSkæv dagligSkæv -> ordinationDetailsPane.setSkæv(dagligSkæv);
+                case PN pn -> ordinationDetailsPane.setPN(pn);
+                default -> {
+                }
             }
         }
     }
 
     public void updateControls() {
-        int selected = 0;
-        if (lstOrdination.getSelectionModel().getSelectedItem() != null) {
-            selected = lstOrdination.getSelectionModel().getSelectedIndex();
+        int selectedIndex = 0;
+        if (lstOrdination.getSelectionModel().getSelectedIndex() != -1) {
+            selectedIndex = lstOrdination.getSelectionModel().getSelectedIndex();
         }
         lstOrdination.getItems().setAll(lstPatient.getSelectionModel().getSelectedItem().getOrdinationer());
-        lstOrdination.getSelectionModel().select(selected);
+        lstOrdination.getSelectionModel().select(selectedIndex);
     }
 }

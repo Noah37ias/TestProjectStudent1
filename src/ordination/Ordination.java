@@ -1,11 +1,14 @@
 package ordination;
 
+import org.jspecify.annotations.NullMarked;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+@NullMarked
 public abstract class Ordination {
-    private final LocalDate startDato;
-    private final LocalDate slutDato;
+    private LocalDate startDato;
+    private LocalDate slutDato;
 
     public LocalDate getStartDato() {
         return startDato;
@@ -16,7 +19,7 @@ public abstract class Ordination {
     }
 
     /**
-     * Returner antal hele dage mellem startdato og slutdato
+     * Returner antal dage mellem startdato og slutdato
      * (begge dage inklusive).
      */
     public int antalDage() {
@@ -34,6 +37,6 @@ public abstract class Ordination {
     /** Returner den gennemsnitlige dosis givet per dag. */
     public abstract double døgnDosis();
 
-    /** Returner ordinations typen som en String. */
+    /** Returner ordinations typen som en String (f.eks. "PN"). */
     public abstract String getType();
 }

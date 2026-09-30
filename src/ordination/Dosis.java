@@ -1,10 +1,13 @@
 package ordination;
 
+import org.jspecify.annotations.NullMarked;
+
 import java.time.LocalTime;
 
+@NullMarked
 public class Dosis {
-    private final LocalTime tid;
-    private final double antal;
+    private LocalTime tid;
+    private double antal;
 
     public Dosis(LocalTime tid, double antal) {
         this.tid = tid;
