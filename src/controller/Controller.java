@@ -77,7 +77,9 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void anvendOrdinationPN(PN ordination, LocalDate dato) {
-        // TODO
+        if (!ordination.anvendDosis(dato)){
+            throw new IllegalArgumentException("Datoen er uden for ordinationens gyldighedsperiode");
+        }
     }
 
     /**

@@ -26,6 +26,10 @@ public abstract class Ordination {
         return slutDato;
     }
 
+    public Lægemiddel getLægemiddel() {
+        return lægemiddel;
+    }
+
     /**
      * Returner antal dage mellem startdato og slutdato
      * (begge dage inklusive).
