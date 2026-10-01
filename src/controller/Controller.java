@@ -65,7 +65,7 @@ public abstract class Controller {
         } else if (klokkeSlet.length != antalEnheder.length) {
             throw new IllegalArgumentException("Antallet af elementer i klokkeSlet og antalEnheder er forskellige");
         } else {
-            DagligSkæv dagligSkæv = new DagligSkæv(startDen, slutDen, lægemiddel);
+            DagligSkæv dagligSkæv = new DagligSkæv(startDen, slutDen, lægemiddel, klokkeSlet, antalEnheder);
             patient.addOrdinationer(dagligSkæv);
             return dagligSkæv;
         }
