@@ -77,7 +77,7 @@ public abstract class Controller {
      * kastes en IllegalArgumentException.
      */
     public static void anvendOrdinationPN(PN ordination, LocalDate dato) {
-        if (!ordination.anvendDosis(dato)){
+        if (!ordination.anvendDosis(dato)) {
             throw new IllegalArgumentException("Datoen er uden for ordinationens gyldighedsperiode");
         }
     }
@@ -87,15 +87,16 @@ public abstract class Controller {
      * (Den anbefalede dosis afhænger af patientens vægt.)
      */
     public static double anbefaletDosisPrDøgn(Patient patient, Lægemiddel lægemiddel) {
+        double vægt = patient.getVægt();
         double dosis = 0;
-        if (patient.getVægt() > 120) {
+        if (vægt > 120) {
             dosis = lægemiddel.getAntalPrKgPrDøgnTung();
-        } else if (patient.getVægt() >= 25 && patient.getVægt() <= 120) {
+        } else if (vægt >= 25) {
             dosis = lægemiddel.getAntalPrKgPrDøgnNormal();
-        } else if (patient.getVægt() < 25) {
+        } else if (vægt < 25) {
             dosis = lægemiddel.getAntalPrKgPrDøgnLet();
         }
-        return dosis;
+        return vægt * dosis;
     }
 
     /**
@@ -104,8 +105,17 @@ public abstract class Controller {
     public static int antalOrdinationerPrVægtPrLægemiddel(
             double vægtStart, double vægtSlut, Lægemiddel lægemiddel
     ) {
-        // TODO
-        return 0;
+        int antal = 0;
+        for (Patient p : getAllePatienter()) {
+            if (p.getVægt() <= vægtSlut || p.getVægt() >= vægtStart) {
+                for (Ordination o : p.getOrdinationer()) {
+                    if (o.getLægemiddel().equals(lægemiddel)) {
+                        antal++;
+                    }
+                }
+            }
+        }
+        return antal;
     }
 
     public static List<Patient> getAllePatienter() {

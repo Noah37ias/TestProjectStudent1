@@ -29,7 +29,7 @@ public class Patient {
         return navn + "  " + cprNr;
     }
 
-    public Ordination getOrdinationer() {
-        return (Ordination) ordinationer;
+    public List<Ordination> getOrdinationer() {
+        return ordinationer;
     }
 }
