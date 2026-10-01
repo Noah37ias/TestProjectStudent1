@@ -13,6 +13,10 @@ public class DagligSkæv extends Ordination {
     public DagligSkæv(LocalDate startDato, LocalDate slutDato, @Nullable Lægemiddel lægemiddel ) {
     }
 
+    public List<Dosis> getDoser() {
+        return doser;
+    }
+
     @Override
     public double samletDosis() {
         return døgnDosis() * antalDage();
