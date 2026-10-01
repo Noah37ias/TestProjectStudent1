@@ -17,8 +17,7 @@ public class PN extends Ordination{
 
     /** Registrer datoen for en anvendt dosis. */
     public boolean anvendDosis(LocalDate dato) {
-        // TODO
-        if (dato.isAfter(getStartDato()) && dato.isBefore(getSlutDato())) {
+        if (!dato.isBefore(getStartDato()) && !dato.isAfter(getSlutDato())) {
             datoer.add(dato);
             return true;
         }
@@ -27,8 +26,8 @@ public class PN extends Ordination{
 
     /** Returner antal gange ordinationen er anvendt. */
     public int antalGangeAnvendt() {
-        // TODO
-        return -1;
+
+        return datoer.size();
     }
 
     @Override
