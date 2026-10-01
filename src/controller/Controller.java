@@ -29,7 +29,7 @@ public abstract class Controller {
         if (startDato.isAfter(slutDato)) {
             throw new IllegalArgumentException("Startdato er efter slutdato, dette er ikke muligt");
         } else {
-            PN pn = new PN(antal, lægemiddel);
+            PN pn = new PN(startDato,slutDato, antal, lægemiddel);
             patient.addOrdinationer(pn);
             return pn;
         }
@@ -115,9 +115,9 @@ public abstract class Controller {
     ) {
         int antal = 0;
         for (Patient p : getAllePatienter()) {
-            if (p.getVægt() <= vægtSlut || p.getVægt() >= vægtStart) {
+            if (p.getVægt() <= vægtSlut && p.getVægt() >= vægtStart) {
                 for (Ordination o : p.getOrdinationer()) {
-                    if (o.getLægemiddel().equals(lægemiddel)) {
+                    if (o.getLægemiddel() == (lægemiddel)) {
                         antal++;
                     }
                 }

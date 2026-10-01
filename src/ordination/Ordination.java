@@ -11,6 +11,11 @@ public abstract class Ordination {
     private LocalDate slutDato;
     private Lægemiddel lægemiddel;
 
+    public Ordination(LocalDate startDato,LocalDate slutDato){
+    this.startDato = startDato;
+    this.slutDato = slutDato;
+    }
+
     public void setLægemiddel(Lægemiddel lægemiddel){
        this.lægemiddel = lægemiddel;
     }

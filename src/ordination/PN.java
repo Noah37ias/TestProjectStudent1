@@ -14,7 +14,8 @@ public class PN extends Ordination {
     private Lægemiddel lægemiddel;
     private List<LocalDate> datoer;
 
-    public PN(double antalEnheder, @Nullable Lægemiddel lægemiddel) {
+    public PN(LocalDate startDato, LocalDate slutDato, double antalEnheder, @Nullable Lægemiddel lægemiddel) {
+        super(startDato,slutDato);
         this.antalEnheder = antalEnheder;
         setLægemiddel(lægemiddel);
         this.datoer=new ArrayList<>();
@@ -42,7 +43,7 @@ public class PN extends Ordination {
     @Override
     public double samletDosis() {
 
-        return døgnDosis() * (ChronoUnit.DAYS.between(datoer.getFirst(), datoer.getLast()) + 1);
+        return døgnDosis() * antalGangeAnvendt();
     }
 
 
