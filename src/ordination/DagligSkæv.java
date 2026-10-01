@@ -1,7 +1,6 @@
 package ordination;
 
 import org.jspecify.annotations.NullMarked;
-
 import java.time.LocalDate;
 import java.util.List;
 

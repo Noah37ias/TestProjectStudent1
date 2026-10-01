@@ -60,6 +60,12 @@ public abstract class Controller {
             LocalDate startDen, LocalDate slutDen, LocalTime[] klokkeSlet, double[] antalEnheder,
             Patient patient, @Nullable Lægemiddel lægemiddel
     ) {
+        if (startDen.isAfter(slutDen)){
+            throw new IllegalArgumentException("startDato er efter slutDato");
+        }
+        if (klokkeSlet.length != antalEnheder.length){
+            throw new IllegalArgumentException("antallet af elementer i klokkeSlet og antalEnheder er forskellige");
+        }
         // TODO
         return new DagligSkæv();
     }
