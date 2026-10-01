@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NullMarked
-public class PN extends Ordination{
+public class PN extends Ordination {
     private double antalEnheder;
     private List<LocalDate> datoer = new ArrayList<>();
 
@@ -33,14 +33,18 @@ public class PN extends Ordination{
 
     @Override
     public double samletDosis() {
-        return 0;
+
+        return døgnDosis() * (ChronoUnit.DAYS.between(datoer.getFirst(), datoer.getLast()) + 1);
     }
 
-    //(antal gange ordinationen er anvendt * antal enheder) / (antal dage mellem første og sidste
-    //anvendelsesdato)
+
     @Override
     public double døgnDosis() {
-        return (antalGangeAnvendt() * antalEnheder) / (ChronoUnit.DAYS.between(datoer.getFirst(),datoer.getLast())+1);
+        if (antalGangeAnvendt() == 0) {
+            return 0;
+        } else {
+            return (antalGangeAnvendt() * antalEnheder) / (ChronoUnit.DAYS.between(datoer.getFirst(), datoer.getLast()) + 1);
+        }
     }
 
     @Override
