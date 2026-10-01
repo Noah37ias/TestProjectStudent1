@@ -1,6 +1,7 @@
 package ordination;
 
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -13,7 +14,7 @@ public class PN extends Ordination {
     private Lægemiddel lægemiddel;
     private List<LocalDate> datoer = new ArrayList<>();
 
-    public PN(double antalEnheder, Lægemiddel lægemiddel) {
+    public PN(double antalEnheder, @Nullable Lægemiddel lægemiddel) {
         this.antalEnheder = antalEnheder;
         this.lægemiddel = lægemiddel;
     }

@@ -26,8 +26,13 @@ public abstract class Controller {
             LocalDate startDato, LocalDate slutDato, double antal,
             Patient patient, @Nullable Lægemiddel lægemiddel
     ) {
-        // TODO
-        return new PN();
+        if (startDato.isAfter(slutDato)) {
+            throw new IllegalArgumentException("Startdato er efter slutdato, dette er ikke muligt");
+        } else {
+            PN pn = new PN(antal, lægemiddel);
+            patient.addOrdinationer(pn);
+            return pn;
+        }
     }
 
     /**
