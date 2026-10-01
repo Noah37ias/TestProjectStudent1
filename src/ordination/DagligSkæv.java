@@ -1,6 +1,8 @@
 package ordination;
 
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,8 +10,7 @@ import java.util.List;
 public class DagligSkæv extends Ordination {
     private List<Dosis> doser;
 
-    public DagligSkæv(LocalDate startDato, LocalDate slutDato, Lægemiddel lægemiddel, List<Dosis> doser) {
-        this.doser = doser;
+    public DagligSkæv(LocalDate startDato, LocalDate slutDato, @Nullable Lægemiddel lægemiddel ) {
     }
 
     @Override

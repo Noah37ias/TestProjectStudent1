@@ -60,14 +60,15 @@ public abstract class Controller {
             LocalDate startDen, LocalDate slutDen, LocalTime[] klokkeSlet, double[] antalEnheder,
             Patient patient, @Nullable Lægemiddel lægemiddel
     ) {
-        if (startDen.isAfter(slutDen)){
-            throw new IllegalArgumentException("startDato er efter slutDato");
+        if (startDen.isAfter(slutDen)) {
+            throw new IllegalArgumentException("StartDato er efter slutDato");
+        } else if (klokkeSlet.length != antalEnheder.length) {
+            throw new IllegalArgumentException("Antallet af elementer i klokkeSlet og antalEnheder er forskellige");
+        } else {
+            DagligSkæv dagligSkæv = new DagligSkæv(startDen, slutDen, lægemiddel);
+            patient.addOrdinationer(dagligSkæv);
+            return dagligSkæv;
         }
-        if (klokkeSlet.length != antalEnheder.length){
-            throw new IllegalArgumentException("antallet af elementer i klokkeSlet og antalEnheder er forskellige");
-        }
-        // TODO
-        return new DagligSkæv();
     }
 
     /**
@@ -95,7 +96,9 @@ public abstract class Controller {
         return dosis;
     }
 
-    /** Returner antal ordinationer af lægemidlet for patienter med vægt i vægtintervallet. */
+    /**
+     * Returner antal ordinationer af lægemidlet for patienter med vægt i vægtintervallet.
+     */
     public static int antalOrdinationerPrVægtPrLægemiddel(
             double vægtStart, double vægtSlut, Lægemiddel lægemiddel
     ) {
