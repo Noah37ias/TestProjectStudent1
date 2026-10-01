@@ -3,6 +3,7 @@ package ordination;
 import org.jspecify.annotations.NullMarked;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,9 +36,11 @@ public class PN extends Ordination{
         return 0;
     }
 
+    //(antal gange ordinationen er anvendt * antal enheder) / (antal dage mellem første og sidste
+    //anvendelsesdato)
     @Override
     public double døgnDosis() {
-        return 0;
+        return (antalGangeAnvendt() * antalEnheder) / (ChronoUnit.DAYS.between(datoer.getFirst(),datoer.getLast())+1);
     }
 
     @Override
