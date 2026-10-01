@@ -17,18 +17,17 @@ public class DagligSkæv extends Ordination {
 
     @Override
     public double samletDosis() {
+        return døgnDosis() * antalDage();
+    }
+
+    @Override
+    public double døgnDosis() {
         double sum = 0;
         for (Dosis dosis: doser){
             sum += dosis.getAntal();
         }
 
         return sum;
-    }
-
-    @Override
-    public double døgnDosis() {
-
-        return 0;
     }
 
     @Override
