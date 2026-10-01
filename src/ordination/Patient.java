@@ -12,11 +12,10 @@ public class Patient {
     private double vægt;
     private List<Ordination> ordinationer;
 
-    public Patient(String cprNr, String navn, double vægt, List<Ordination> ordinationer) {
+    public Patient(String cprNr, String navn, double vægt) {
         this.cprNr = cprNr;
         this.navn = navn;
         this.vægt = vægt;
-        this.ordinationer = ordinationer;
     }
 
     public double getVægt() {
