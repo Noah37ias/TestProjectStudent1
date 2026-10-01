@@ -3,10 +3,13 @@ package ordination;
 import org.jspecify.annotations.NullMarked;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NullMarked
 public class PN extends Ordination{
     private double antalEnheder;
+    private List<LocalDate> datoer = new ArrayList<>();
 
     public double getAntalEnheder() {
         return antalEnheder;
@@ -15,6 +18,10 @@ public class PN extends Ordination{
     /** Registrer datoen for en anvendt dosis. */
     public boolean anvendDosis(LocalDate dato) {
         // TODO
+        if (dato.isAfter(getStartDato()) && dato.isBefore(getSlutDato())) {
+            datoer.add(dato);
+            return true;
+        }
         return false;
     }
 
@@ -36,6 +43,6 @@ public class PN extends Ordination{
 
     @Override
     public String getType() {
-        return "";
+        return "PN";
     }
 }
