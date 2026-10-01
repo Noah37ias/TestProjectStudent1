@@ -11,8 +11,7 @@ public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
 
     public DagligFast(LocalDate startDato, LocalDate slutDato,
-                       double morgenTal, double middagsTal, double aftenTal, double natTal,
-                       Patient patient, @Nullable Lægemiddel lægemiddel) {
+                       double morgenTal, double middagsTal, double aftenTal, double natTal, @Nullable Lægemiddel lægemiddel) {
 
         setLægemiddel(lægemiddel);
         doser[0] = new Dosis(LocalTime.of(6, 0), morgenTal);
@@ -35,5 +34,9 @@ public class DagligFast extends Ordination {
     @Override
     public String getType() {
         return "Daglig Fast";
+    }
+
+    public Dosis[] getDoser() {
+        return doser;
     }
 }
