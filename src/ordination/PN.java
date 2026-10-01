@@ -10,7 +10,13 @@ import java.util.List;
 @NullMarked
 public class PN extends Ordination {
     private double antalEnheder;
+    private Lægemiddel lægemiddel;
     private List<LocalDate> datoer = new ArrayList<>();
+
+    public PN(double antalEnheder, Lægemiddel lægemiddel) {
+        this.antalEnheder = antalEnheder;
+        this.lægemiddel = lægemiddel;
+    }
 
     public double getAntalEnheder() {
         return antalEnheder;
