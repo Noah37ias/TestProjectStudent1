@@ -1,6 +1,7 @@
 package ordination;
 
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,8 +10,9 @@ import java.time.LocalTime;
 public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
 
-    private DagligFast(LocalDate startDato, LocalDate slutDato, Lægemiddel lægemiddel,
-                       double morgenTal, double middagsTal, double aftenTal, double natTal) {
+    public DagligFast(LocalDate startDato, LocalDate slutDato,
+                       double morgenTal, double middagsTal, double aftenTal, double natTal,
+                       Patient patient, @Nullable Lægemiddel lægemiddel) {
 
         setLægemiddel(lægemiddel);
         doser[0] = new Dosis(LocalTime.of(6, 0), morgenTal);

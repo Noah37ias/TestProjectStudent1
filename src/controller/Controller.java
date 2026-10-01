@@ -23,8 +23,8 @@ public abstract class Controller {
      * Pre: antal > 0.
      */
     public static PN opretPNOrdination(
-        LocalDate startDato, LocalDate slutDato, double antal,
-        Patient patient, @Nullable Lægemiddel lægemiddel
+            LocalDate startDato, LocalDate slutDato, double antal,
+            Patient patient, @Nullable Lægemiddel lægemiddel
     ) {
         // TODO
         return new PN();
@@ -36,12 +36,15 @@ public abstract class Controller {
      * Pre: morgenAntal, middagAntal, aftenAntal, natAntal er alle >= 0.
      */
     public static DagligFast opretDagligFastOrdination(
-        LocalDate startDato, LocalDate slutDato,
-        double morgenAntal, double middagAntal, double aftenAntal, double natAntal,
-        Patient patient, @Nullable Lægemiddel lægemiddel
+            LocalDate startDato, LocalDate slutDato,
+            double morgenAntal, double middagAntal, double aftenAntal, double natAntal,
+            Patient patient, @Nullable Lægemiddel lægemiddel
     ) {
         // TODO
-        return new DagligFast();
+        if (startDato.isAfter(slutDato)) {
+        }
+
+        return new DagligFast(startDato, slutDato, morgenAntal, middagAntal, aftenAntal, natAntal, patient, lægemiddel);
     }
 
     /**
@@ -52,8 +55,8 @@ public abstract class Controller {
      * Pre: I antalEnheder er alle tal >= 0.
      */
     public static DagligSkæv opretDagligSkævOrdination(
-        LocalDate startDen, LocalDate slutDen, LocalTime[] klokkeSlet, double[] antalEnheder,
-        Patient patient, @Nullable Lægemiddel lægemiddel
+            LocalDate startDen, LocalDate slutDen, LocalTime[] klokkeSlet, double[] antalEnheder,
+            Patient patient, @Nullable Lægemiddel lægemiddel
     ) {
         // TODO
         return new DagligSkæv();
@@ -79,7 +82,7 @@ public abstract class Controller {
 
     /** Returner antal ordinationer af lægemidlet for patienter med vægt i vægtintervallet. */
     public static int antalOrdinationerPrVægtPrLægemiddel(
-        double vægtStart, double vægtSlut, Lægemiddel lægemiddel
+            double vægtStart, double vægtSlut, Lægemiddel lægemiddel
     ) {
         // TODO
         return 0;
@@ -100,12 +103,12 @@ public abstract class Controller {
     }
 
     public static Lægemiddel opretLægemiddel(
-        String navn, String enhed,
-        double enhedPrKgPrDøgnLet, double enhedPrKgPrDøgnNormal, double enhedPrKgPrDøgnTung
+            String navn, String enhed,
+            double enhedPrKgPrDøgnLet, double enhedPrKgPrDøgnNormal, double enhedPrKgPrDøgnTung
     ) {
         Lægemiddel lm = new Lægemiddel(
-            navn, enhed,
-            enhedPrKgPrDøgnLet, enhedPrKgPrDøgnNormal, enhedPrKgPrDøgnTung
+                navn, enhed,
+                enhedPrKgPrDøgnLet, enhedPrKgPrDøgnNormal, enhedPrKgPrDøgnTung
         );
         storage.storeLægemiddel(lm);
         return lm;
