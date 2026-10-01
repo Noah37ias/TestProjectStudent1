@@ -13,17 +13,19 @@ public class DagligSkæv extends Ordination {
     private List<Dosis> doser;
 
     public DagligSkæv(LocalDate startDato, LocalDate slutDato, @Nullable Lægemiddel lægemiddel,
-                      LocalTime[] klokkeSlet, double[] antalEnheder ) {
+                      LocalTime[] klokkeSlet, double[] antalEnheder) {
         setLægemiddel(lægemiddel);
         this.doser = new ArrayList<>();
 
+
+        for (int i = 0; i < klokkeSlet.length; i++) {
+            Dosis dosis = new Dosis(klokkeSlet[i], antalEnheder[i]);
+            this.doser.add(dosis);
+        }
     }
 
     public List<Dosis> getDoser() {
         return doser;
-    }
-    public void addDoser(Dosis dosis){
-        doser.add(dosis);
     }
 
     @Override
@@ -34,7 +36,7 @@ public class DagligSkæv extends Ordination {
     @Override
     public double døgnDosis() {
         double sum = 0;
-        for (Dosis dosis: doser){
+        for (Dosis dosis : doser) {
             sum += dosis.getAntal();
         }
 
