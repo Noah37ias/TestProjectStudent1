@@ -85,6 +85,9 @@ public abstract class Controller {
         if (!ordination.anvendDosis(dato)) {
             throw new IllegalArgumentException("Datoen er uden for ordinationens gyldighedsperiode");
         }
+        else{
+            ordination.anvendDosis(dato);
+        }
     }
 
     /**

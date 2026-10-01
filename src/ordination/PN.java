@@ -12,11 +12,12 @@ import java.util.List;
 public class PN extends Ordination {
     private double antalEnheder;
     private Lægemiddel lægemiddel;
-    private List<LocalDate> datoer = new ArrayList<>();
+    private List<LocalDate> datoer;
 
     public PN(double antalEnheder, @Nullable Lægemiddel lægemiddel) {
         this.antalEnheder = antalEnheder;
-        this.lægemiddel = lægemiddel;
+        setLægemiddel(lægemiddel);
+        this.datoer=new ArrayList<>();
     }
 
     public double getAntalEnheder() {
