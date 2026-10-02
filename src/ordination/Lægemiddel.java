@@ -11,8 +11,8 @@ public class Lægemiddel {
     private double antalPrKgPrDøgnTung;   // faktor hvis patients vægt > 120 kg
 
     public Lægemiddel(
-        String navn, String enhed,
-        double antalPrKgPrDøgnLet, double antalPrKgPrDøgnNormal, double antalPrKgPrDøgnTung
+            String navn, String enhed,
+            double antalPrKgPrDøgnLet, double antalPrKgPrDøgnNormal, double antalPrKgPrDøgnTung
     ) {
         this.navn = navn;
         this.enhed = enhed;

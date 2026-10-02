@@ -29,7 +29,7 @@ public abstract class Controller {
         if (startDato.isAfter(slutDato)) {
             throw new IllegalArgumentException("Startdato er efter slutdato, dette er ikke muligt");
         } else {
-            PN pn = new PN(startDato,slutDato, antal, lægemiddel);
+            PN pn = new PN(startDato, slutDato, antal, lægemiddel);
             patient.addOrdinationer(pn);
             return pn;
         }
@@ -84,8 +84,7 @@ public abstract class Controller {
     public static void anvendOrdinationPN(PN ordination, LocalDate dato) {
         if (!ordination.anvendDosis(dato)) {
             throw new IllegalArgumentException("Datoen er uden for ordinationens gyldighedsperiode");
-        }
-        else{
+        } else {
             ordination.anvendDosis(dato);
         }
     }
@@ -117,7 +116,7 @@ public abstract class Controller {
         for (Patient p : getAllePatienter()) {
             if (p.getVægt() <= vægtSlut && p.getVægt() >= vægtStart) {
                 for (Ordination o : p.getOrdinationer()) {
-                    if (o.getLægemiddel() == (lægemiddel)) {
+                    if (o.getLægemiddel().equals(lægemiddel)) {
                         antal++;
                     }
                 }

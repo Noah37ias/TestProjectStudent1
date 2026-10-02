@@ -11,16 +11,17 @@ public abstract class Ordination {
     private LocalDate slutDato;
     private Lægemiddel lægemiddel;
 
-    public Ordination(LocalDate startDato,LocalDate slutDato){
-    this.startDato = startDato;
-    this.slutDato = slutDato;
+    public Ordination(LocalDate startDato, LocalDate slutDato) {
+        this.startDato = startDato;
+        this.slutDato = slutDato;
     }
 
-    public void setLægemiddel(Lægemiddel lægemiddel){
-       this.lægemiddel = lægemiddel;
+    public void setLægemiddel(Lægemiddel lægemiddel) {
+        this.lægemiddel = lægemiddel;
     }
-    public void removeLægemiddel(){
-        this.lægemiddel=null;
+
+    public void removeLægemiddel() {
+        this.lægemiddel = null;
     }
 
     public LocalDate getStartDato() {

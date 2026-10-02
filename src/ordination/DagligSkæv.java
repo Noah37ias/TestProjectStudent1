@@ -14,7 +14,7 @@ public class DagligSkæv extends Ordination {
 
     public DagligSkæv(LocalDate startDato, LocalDate slutDato, @Nullable Lægemiddel lægemiddel,
                       LocalTime[] klokkeSlet, double[] antalEnheder) {
-        super(startDato,slutDato);
+        super(startDato, slutDato);
         setLægemiddel(lægemiddel);
 
         this.doser = new ArrayList<>();

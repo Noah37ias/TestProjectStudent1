@@ -17,9 +17,11 @@ public class Patient {
         this.navn = navn;
         this.vægt = vægt;
     }
-    public void addOrdinationer(Ordination ordination){
+
+    public void addOrdinationer(Ordination ordination) {
         ordinationer.add(ordination);
     }
+
     public double getVægt() {
         return vægt;
     }

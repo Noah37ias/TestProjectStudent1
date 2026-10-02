@@ -15,10 +15,10 @@ public class PN extends Ordination {
     private List<LocalDate> datoer;
 
     public PN(LocalDate startDato, LocalDate slutDato, double antalEnheder, @Nullable Lægemiddel lægemiddel) {
-        super(startDato,slutDato);
+        super(startDato, slutDato);
         this.antalEnheder = antalEnheder;
         setLægemiddel(lægemiddel);
-        this.datoer=new ArrayList<>();
+        this.datoer = new ArrayList<>();
     }
 
     public double getAntalEnheder() {

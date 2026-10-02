@@ -11,8 +11,8 @@ public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
 
     public DagligFast(LocalDate startDato, LocalDate slutDato,
-                       double morgenTal, double middagsTal, double aftenTal, double natTal, @Nullable Lægemiddel lægemiddel) {
-        super(startDato,slutDato);
+                      double morgenTal, double middagsTal, double aftenTal, double natTal, @Nullable Lægemiddel lægemiddel) {
+        super(startDato, slutDato);
         setLægemiddel(lægemiddel);
         doser[0] = new Dosis(LocalTime.of(6, 0), morgenTal);
         doser[1] = new Dosis(LocalTime.of(12, 0), middagsTal);
