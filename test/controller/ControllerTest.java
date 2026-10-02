@@ -112,6 +112,8 @@ class ControllerTest {
         Controller.anvendOrdinationPN(pn1, LocalDate.of(2026, 10, 2));
         assertEquals(3, pn1.antalGangeAnvendt());
 
+        //Ugyldige data
+
         assertThrows(IllegalArgumentException.class, () -> {
             Controller.anvendOrdinationPN(pn1, LocalDate.of(2025, 10, 1));
         });
@@ -154,6 +156,8 @@ class ControllerTest {
         Patient p7 = Controller.opretPatient("1604041212", "Noah", 35);
         double result7 = Controller.anbefaletDosisPrDøgn(p7, para);
         assertEquals(50, result7, 0.5);
+
+        //Ugyldige data
 
         Patient p8 = Controller.opretPatient("1604041212", "Noah", -1);
         assertThrows(IllegalArgumentException.class, () -> {
