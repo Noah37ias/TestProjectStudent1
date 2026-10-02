@@ -36,14 +36,13 @@ public class PN extends Ordination {
 
     /** Returner antal gange ordinationen er anvendt. */
     public int antalGangeAnvendt() {
-
         return datoer.size();
     }
 
     @Override
     public double samletDosis() {
 
-        return døgnDosis() * antalGangeAnvendt();
+        return antalEnheder * antalGangeAnvendt();
     }
 
 

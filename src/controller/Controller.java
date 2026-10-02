@@ -84,8 +84,6 @@ public abstract class Controller {
     public static void anvendOrdinationPN(PN ordination, LocalDate dato) {
         if (!ordination.anvendDosis(dato)) {
             throw new IllegalArgumentException("Datoen er uden for ordinationens gyldighedsperiode");
-        } else {
-            ordination.anvendDosis(dato);
         }
     }
 
