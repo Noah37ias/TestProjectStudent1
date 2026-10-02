@@ -96,6 +96,9 @@ public abstract class Controller {
     public static double anbefaletDosisPrDøgn(Patient patient, Lægemiddel lægemiddel) {
         double vægt = patient.getVægt();
         double dosis = 0;
+        if(vægt <0 || 1000 < vægt){
+            throw new IllegalArgumentException();
+        }
         if (vægt > 120) {
             dosis = lægemiddel.getAntalPrKgPrDøgnTung();
         } else if (vægt >= 25) {
@@ -103,7 +106,7 @@ public abstract class Controller {
         } else if (vægt < 25) {
             dosis = lægemiddel.getAntalPrKgPrDøgnLet();
         }
-        return vægt * dosis;
+        return dosis;
     }
 
     /**
