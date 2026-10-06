@@ -133,4 +133,14 @@ class PNTest {
         pn.anvendDosis(LocalDate.of(2026,10,5));
         assertEquals(2, pn.døgnDosis());
     }
+
+    @Test
+    void døgnDosisTestAfSortering() {
+        PN pn = new PN(LocalDate.of(2026, 10, 1), LocalDate.of(2026, 10, 10), 2, null);
+        pn.anvendDosis(LocalDate.of(2026,10,12));
+        pn.anvendDosis(LocalDate.of(2026,10,3));
+        pn.anvendDosis(LocalDate.of(2026,10,2));
+        pn.anvendDosis(LocalDate.of(2026,10,5));
+        IO.println(pn.døgnDosis());
+    }
 }

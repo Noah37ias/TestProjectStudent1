@@ -6,6 +6,7 @@ import org.jspecify.annotations.Nullable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @NullMarked
@@ -51,6 +52,7 @@ public class PN extends Ordination {
         if (antalGangeAnvendt() == 0) {
             return 0;
         } else {
+            Collections.sort(datoer);
             return (antalGangeAnvendt() * antalEnheder) / (ChronoUnit.DAYS.between(datoer.getFirst(), datoer.getLast()) + 1);
         }
     }
