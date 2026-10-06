@@ -65,7 +65,7 @@ class DagligSkævTest {
     }
 
     @Test
-    void samletDosis1DagTomDoseringer(){
+    void samletDosis1DagIngenDoseringer(){
         LocalTime[] klokkeSlet = {};
         double[] antalEnheder = {};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 2), null, klokkeSlet, antalEnheder);
@@ -83,7 +83,7 @@ class DagligSkævTest {
     }
 
     @Test
-    void samletDosis2Dag05Doseringer(){
+    void samletDosis2DagDecimalDoseringer(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30)};
         double[] antalEnheder = {0.5};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 3), null, klokkeSlet, antalEnheder);
@@ -102,7 +102,6 @@ class DagligSkævTest {
         assertEquals(1, result, 0.0001);
     }
 
-
     @Test
     void døgnDosis2Doseringer(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30), LocalTime.of(10, 30)};
@@ -111,7 +110,6 @@ class DagligSkævTest {
         double result = d.døgnDosis();
         assertEquals(3, result, 0.0001);
     }
-
 
     @Test
     void døgnDosis6Doseringer(){
