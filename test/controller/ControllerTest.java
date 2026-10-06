@@ -128,7 +128,7 @@ class ControllerTest {
 
     @org.junit.jupiter.api.Test
     void anbefaletDosisPrDøgn() {
-        Lægemiddel para = Controller.opretLægemiddel("Paracetamol", "ml", 25, 50, 75);
+        Lægemiddel para = Controller.opretLægemiddel(null, "ml", 25, 50, 75);
         Patient p1 = Controller.opretPatient("1604041212", "Noah", 1);
         double result1 = Controller.anbefaletDosisPrDøgn(p1, para);
         assertEquals(25, result1, 0.5);
