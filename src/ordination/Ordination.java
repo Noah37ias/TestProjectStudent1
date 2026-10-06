@@ -1,6 +1,7 @@
 package ordination;
 
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -9,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 public abstract class Ordination {
     private LocalDate startDato;
     private LocalDate slutDato;
-    private Lægemiddel lægemiddel;
+    private @Nullable Lægemiddel lægemiddel;
 
     public Ordination(LocalDate startDato, LocalDate slutDato) {
         this.startDato = startDato;
