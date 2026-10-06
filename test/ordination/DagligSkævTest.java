@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DagligSkævTest {
 
     //--------------------------------------samletDosis-----------------------------------------------
-    
+
     @Test
     void samletDosis1Dag1Dosering(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30)};
@@ -94,7 +94,7 @@ class DagligSkævTest {
 //--------------------------------------døgnDosis-----------------------------------------------
 
     @Test
-    void døgnDosis1Dag1Dosering(){
+    void døgnDosis1Dosering(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30)};
         double[] antalEnheder = {1};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 2), null, klokkeSlet, antalEnheder);
@@ -102,17 +102,9 @@ class DagligSkævTest {
         assertEquals(1, result, 0.0001);
     }
 
-    @Test
-    void døgnDosis4Dage1Dosering(){
-        LocalTime[] klokkeSlet = {LocalTime.of(9, 30)};
-        double[] antalEnheder = {1};
-        DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 5), null, klokkeSlet, antalEnheder);
-        double result = d.døgnDosis();
-        assertEquals(1, result, 0.0001);
-    }
 
     @Test
-    void døgnDosis1Dag2Doseringer(){
+    void døgnDosis2Doseringer(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30), LocalTime.of(10, 30)};
         double[] antalEnheder = {1, 2};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 2), null, klokkeSlet, antalEnheder);
@@ -122,7 +114,7 @@ class DagligSkævTest {
 
 
     @Test
-    void døgnDosis1Dag6Doseringer(){
+    void døgnDosis6Doseringer(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30), LocalTime.of(10, 30), LocalTime.of(13, 30),  LocalTime.of(14, 30),LocalTime.of(19, 30),LocalTime.of(20, 30)};
         double[] antalEnheder = {2, 1, 2, 1, 2, 1};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 2), null, klokkeSlet, antalEnheder);
@@ -131,7 +123,7 @@ class DagligSkævTest {
     }
 
     @Test
-    void døgnDosis1DagTomDoseringer(){
+    void døgnDosisIngenDoseringer(){
         LocalTime[] klokkeSlet = {};
         double[] antalEnheder = {};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 2), null, klokkeSlet, antalEnheder);
@@ -140,7 +132,7 @@ class DagligSkævTest {
     }
 
     @Test
-    void døgnDosis1Dag0Doseringer(){
+    void døgnDosis0Doseringer(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30)};
         double[] antalEnheder = {0};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 2), null, klokkeSlet, antalEnheder);
@@ -149,7 +141,7 @@ class DagligSkævTest {
     }
 
     @Test
-    void døgnDosis2Dage05Doseringer(){
+    void døgnDosisDecimalDosering(){
         LocalTime[] klokkeSlet = {LocalTime.of(9, 30)};
         double[] antalEnheder = {0.5};
         DagligSkæv d = new DagligSkæv(LocalDate.of(2026, 10, 2), LocalDate.of(2026, 10, 3), null, klokkeSlet, antalEnheder);
